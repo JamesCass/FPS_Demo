@@ -1,0 +1,227 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhm4ya6prowk2"]
+
+[ext_resource type="PackedScene" uid="uid://dsk2k55monfft" path="res://Scenes/player.tscn" id="1_iugpo"]
+[ext_resource type="PackedScene" uid="uid://bcy55by2yymv5" path="res://Scenes/light_post.tscn" id="2_d4252"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ax63a"]
+albedo_color = Color(0.120261, 0.336844, 0.163257, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xogsn"]
+albedo_color = Color(5.58317e-06, 0.752752, 0.968415, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nv5j"]
+albedo_color = Color(0.803922, 0.219608, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8mm8t"]
+albedo_color = Color(0.906406, 0.690107, 0.188286, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7gyq"]
+albedo_color = Color(0.999247, 0.819266, 0.897105, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lf035"]
+albedo_color = Color(0.853198, 1, 0.920844, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k73q6"]
+albedo_color = Color(0.123261, 0.497719, 0.534347, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fsvyw"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_y7cd4"]
+sky_material = SubResource("ProceduralSkyMaterial_fsvyw")
+
+[sub_resource type="Environment" id="Environment_5kibb"]
+background_mode = 1
+background_color = Color(0.32851, 0, 0.0768231, 1)
+sky = SubResource("Sky_y7cd4")
+ambient_light_color = Color(0.905882, 0, 0, 1)
+ambient_light_energy = 3.25
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Game" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_iugpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000541925, 1.24385, 0.0023675)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00628281, 0.035934, 0.0107288)
+material_override = SubResource("StandardMaterial3D_ax63a")
+use_collision = true
+size = Vector3(50, 0.001, 50)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.586, 0.483904, 6.276)
+material_override = SubResource("StandardMaterial3D_xogsn")
+use_collision = true
+size = Vector3(5, 1, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.134, 1.02752, 13.607)
+material_override = SubResource("StandardMaterial3D_3nv5j")
+use_collision = true
+size = Vector3(5, 2, 5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5808, 1.48076, 13.571)
+material_override = SubResource("StandardMaterial3D_8mm8t")
+use_collision = true
+size = Vector3(5, 3, 5)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.307, 2.0138, 6.031)
+material_override = SubResource("StandardMaterial3D_u7gyq")
+use_collision = true
+size = Vector3(5, 4, 5)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5045, 3.76158, -7.86376)
+material_override = SubResource("StandardMaterial3D_u7gyq")
+use_collision = true
+size = Vector3(1.52393, 0.5, 18.6558)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0246, 4.53724, -20.9232)
+material_override = SubResource("StandardMaterial3D_lf035")
+use_collision = true
+size = Vector3(8.48376, 0.5, 4.91974)
+
+[node name="Wall1" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.0772, 2.46492, -0.0166006)
+material_override = SubResource("StandardMaterial3D_k73q6")
+use_collision = true
+size = Vector3(0.2, 5, 50)
+
+[node name="Wall2" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0402, 24.6627, 0.0382719)
+material_override = SubResource("StandardMaterial3D_k73q6")
+use_collision = true
+size = Vector3(0.2, 50, 50)
+
+[node name="Wall3" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0809765, 2.46492, 24.9414)
+material_override = SubResource("StandardMaterial3D_k73q6")
+use_collision = true
+size = Vector3(0.2, 5, 50)
+
+[node name="Wall4" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0809765, 2.46492, -24.8822)
+material_override = SubResource("StandardMaterial3D_k73q6")
+use_collision = true
+size = Vector3(0.2, 5, 50)
+
+[node name="LightPost" parent="Environment" instance=ExtResource("2_d4252")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3111, 1.78399, -0.251662)
+
+[node name="LightPost2" parent="Environment" instance=ExtResource("2_d4252")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3422, 6.55429, 9.32475)
+
+[node name="LightPost3" parent="Environment" instance=ExtResource("2_d4252")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0327, 6.66926, -22.7488)
+
+[node name="LightPost4" parent="Environment" instance=ExtResource("2_d4252")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4932, 1.89595, -7.72882)
+
+[node name="Atmosphere" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Atmosphere"]
+environment = SubResource("Environment_5kibb")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Atmosphere"]
+transform = Transform3D(1, 0, 0, 0, 0.562718, -0.826649, 0, 0.826649, 0.562718, 24.6786, 7.31126, 5.30801)
+light_color = Color(1, 0, 1, 1)
+light_energy = 16.0
+light_indirect_energy = 1.26
+light_volumetric_fog_energy = 11.35
+light_size = 2.83
+light_specular = 4.655
+spot_range = 26.39
+spot_attenuation = 0.0490367
+spot_angle = 22.71
+spot_angle_attenuation = 0.0206173
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Atmosphere"]
+transform = Transform3D(1, 0, 0, 0, 0.562718, -0.826649, 0, 0.826649, 0.562718, 24.7284, 7.31126, 16.0198)
+light_color = Color(0.602836, 0.574668, 1, 1)
+light_energy = 30.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 40.0
+light_size = 20.0
+light_specular = 1.0
+spot_range = 39.215
+spot_attenuation = 0.052556
+spot_angle = 14.14
+spot_angle_attenuation = 0.0473662
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Atmosphere"]
+transform = Transform3D(-0.256542, -0.543886, 0.798983, 0.966533, -0.144361, 0.21207, 0, 0.826649, 0.562718, 7.02204, 7.31126, 23.6553)
+light_color = Color(0.602836, 0.574668, 1, 1)
+light_energy = 30.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 40.0
+light_size = 20.0
+light_specular = 1.0
+spot_range = 39.215
+spot_attenuation = 0.812254
+spot_angle = 14.14
+spot_angle_attenuation = 0.0717937
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Atmosphere"]
+transform = Transform3D(1, 0, 0, 0, 0.83769, 0.546146, 0, -0.546146, 0.83769, 24.7284, 43.8714, 16.0198)
+light_color = Color(0.836267, 0.34665, 0, 1)
+light_energy = 100.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 40.0
+light_size = 20.0
+light_specular = 1.0
+spot_range = 360.37
+spot_angle = 39.85
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Atmosphere/SpotLight3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.463055, -38.5306, -15.4049)
+light_energy = 0.678
+light_indirect_energy = 9.686
+light_volumetric_fog_energy = 4.38
+light_size = 1.0
+light_specular = 3.688
+omni_range = 10.763
+omni_attenuation = 0.0484152
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Atmosphere/SpotLight3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.0605, -38.5306, -15.4049)
+light_energy = 0.678
+light_indirect_energy = 9.686
+light_volumetric_fog_energy = 4.38
+light_size = 1.0
+light_specular = 3.688
+omni_range = 10.763
+omni_attenuation = 0.0484152
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Atmosphere/SpotLight3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.0605, -12.3469, -55.566)
+light_energy = 0.678
+light_indirect_energy = 9.686
+light_volumetric_fog_energy = 4.38
+light_size = 1.0
+light_specular = 3.688
+omni_range = 10.763
+omni_attenuation = 0.0484152
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Atmosphere/SpotLight3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05149, -12.3469, -55.566)
+light_energy = 0.678
+light_indirect_energy = 9.686
+light_volumetric_fog_energy = 4.38
+light_size = 1.0
+light_specular = 3.688
+omni_range = 10.763
+omni_attenuation = 0.0484152
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92674, 1.08993, 4.65603)
+pixel_size = 0.0335
+billboard = 1
+text = "HELLO"
