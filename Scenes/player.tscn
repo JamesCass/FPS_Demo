@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsk2k55monfft"]
+[gd_scene load_steps=5 format=3 uid="uid://dsk2k55monfft"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_2h0rr"]
+[ext_resource type="PackedScene" uid="uid://bpggbe86cu7i5" path="res://Scenes/pistol.tscn" id="2_c2jlq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3i6u0"]
 
@@ -22,3 +23,6 @@ shape = SubResource("ConvexPolygonShape3D_85h40")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.676848, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Node3D_CamPivot"]
+
+[node name="USP-S" parent="Node3D_CamPivot/Camera3D" instance=ExtResource("2_c2jlq")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.420536, -0.437828, -1.21662)

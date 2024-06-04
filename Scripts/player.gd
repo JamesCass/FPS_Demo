@@ -4,7 +4,7 @@ var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5
-const SENSITIVITY = 0.01
+const SENSITIVITY = 0.001
 
 #headbob vars
 const BOB_FREQUENCY = 2.0
@@ -18,9 +18,16 @@ const FOV_CHANGE = 1.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
 
-@onready var head = $Node3D_CamPivot
 
+#bullet vars
+var bullet = load("res://Scenes/bullet.tscn")
+var instance
+
+
+@onready var head = $Node3D_CamPivot
 @onready var camera = $Node3D_CamPivot/Camera3D
+@onready var pistol_anim = $"Node3D_CamPivot/Camera3D/USP-S/AnimationPlayer"
+@onready var pistol_barrel = $"Node3D_CamPivot/Camera3D/USP-S/RayCast3D"
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -29,7 +36,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -45,6 +52,16 @@ func _physics_process(delta):
 		speed = SPRINT_SPEED
 	else:
 		speed = WALK_SPEED
+	
+	#Handle shooting.
+	if Input.is_action_pressed("shoot"):
+		if !pistol_anim.is_playing():
+			pistol_anim.play("shoot")
+			instance = bullet.instantiate()
+			instance.position = pistol_barrel.global_position
+			instance.transform.basis = pistol_barrel.global_transform.basis
+			get_parent().add_child(instance)
+	
 	
 	
 	# Get the input direction and handle the movement/deceleration.
