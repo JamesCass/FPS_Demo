@@ -3,7 +3,7 @@ extends CharacterBody3D
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 6.1
 const SENSITIVITY = 0.001
 
 #headbob vars
@@ -39,7 +39,7 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _physics_process(delta):
-	# Add the gravity.
+	#Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -62,10 +62,7 @@ func _physics_process(delta):
 			instance.transform.basis = pistol_barrel.global_transform.basis
 			get_parent().add_child(instance)
 	
-	
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor():

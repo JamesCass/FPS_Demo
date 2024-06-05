@@ -15,16 +15,14 @@ func _process(delta):#Called every frame. 'delta' is the elapsed time since the 
 	position += transform.basis * Vector3(0, 0, -SPEED) * delta# Move the bullet forward by updating its position based on its speed and direction
 	
 	if ray.is_colliding():#Check if the raycast is colliding with any object
+		print("Bullet is colliding")
 		mesh.visible = false#Make the bullet mesh invisible
 		particles.emitting = true#Start the particle emission
 		ray.enabled = false#Disable the raycast to prevent further collision checks
 		var collider = ray.get_collider()# Get the object the ray collided with
 		if collider and collider.has_method("destroy_tile"):# Check if the collider is valid (not null) and has the method 'destroy_tile'
 			collider.destroy_tile(ray.get_collision_point() - ray.get_collision_normal())#Call the 'destroy_tile' method on the collider with the collision point adjusted by the collision normal
-			
 			await get_tree().create_timer(1.0).timeout#Create a timer that waits for 1 second
-			queue_free()#Queue the bullet for deletion
-		else:
 			queue_free()#Queue the bullet for deletion
 
 

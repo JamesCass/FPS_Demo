@@ -42,7 +42,7 @@ libraries = {
 }
 
 [node name="RayCast3D" type="RayCast3D" parent="." index="2"]
-transform = Transform3D(1.99742, -0.000481909, 0.00302709, 0.000484576, 1.98378, 0.0190768, -0.000453287, -0.00283267, 13.3594, 0, 0.343548, -3.83263)
+transform = Transform3D(1.99742, -0.000481909, 0.00302709, 0.000484576, 1.98378, 0.0190768, -0.000453287, -0.00283267, 13.3594, -0.0200129, 0.336967, 0.705934)
 target_position = Vector3(0, 0, -1)
 debug_shape_custom_color = Color(1, 1, 1, 1)
-debug_shape_thickness = 5
+debug_shape_thickness = 1
